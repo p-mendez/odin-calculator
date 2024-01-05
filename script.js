@@ -9,3 +9,7 @@ function subtract(minuend, subtrahend) {
 function multiply(...numbers) {
     return numbers.reduce((previous, current) => previous * current, 1);
 }
+
+function divide(dividend, divisor) {
+    return dividend / divisor;
+}

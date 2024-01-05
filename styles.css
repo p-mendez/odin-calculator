@@ -1,3 +1,35 @@
 * {
     box-sizing: border-box;
 }
+
+li {
+    list-style: none;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    border: 1px solid black;
+    height: 500px;
+    width: 400px;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    border: 1px solid darkgray;
+    height: 20%;
+    margin: 20px;
+}
+
+.rounded-corners {
+    border-radius: 10px;
+}

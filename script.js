@@ -16,6 +16,10 @@ function multiply(...numbers) {
     return numbers.reduce((previous, current) => previous * current, 1);
 }
 
+function operate(operator, firstNumber, secondNumber) {
+    return operator(firstNumber, secondNumber);
+}
+
 function subtract(minuend, subtrahend) {
     return minuend - subtrahend;
 }

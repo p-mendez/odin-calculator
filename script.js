@@ -5,3 +5,7 @@ function add(...numbers) {
 function subtract(minuend, subtrahend) {
     return minuend - subtrahend;
 }
+
+function multiply(...numbers) {
+    return numbers.reduce((previous, current) => previous * current, 1);
+}

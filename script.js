@@ -16,6 +16,7 @@ function multiply(...numbers) {
     return numbers.reduce((previous, current) => previous * current, 1);
 }
 
+/* Delegates the operation based on the operator and the two numbers passed */
 function operate(operator, firstNumber, secondNumber) {
     return operator(firstNumber, secondNumber);
 }

@@ -1,3 +1,9 @@
+// VARIABLES
+let firstNumber;
+let secondNumber;
+let operator;
+
+// FUNCTIONS 
 function add(...numbers) {
     return numbers.reduce((previous, current) => previous + current, 0);
 }

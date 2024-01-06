@@ -2,9 +2,11 @@
     box-sizing: border-box;
 }
 
+ul,
 li {
     list-style: none;
     margin: 0;
+    padding: 0;
 }
 
 .flex {
@@ -36,8 +38,24 @@ li {
     border-radius: 10px;
 }
 
-.row ul {
+.buttons {
     display: flex;
     justify-content: space-evenly;
-    padding: 0;
 }
+
+
+/* .column ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0;
+} */
+
+.column ul {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+

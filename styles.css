@@ -4,6 +4,7 @@
 
 ul,
 li {
+    color: white;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -20,13 +21,15 @@ li {
 }
 
 .calculator {
+    background-color: #255FB4;
     border: 1px solid black;
     height: 400px;
     width: 300px;
 }
 
 .screen {
-    border: 1px solid darkgray;
+    background-color: #ADB6BF;
+    border: 1px solid slategray;
     height: 20%;
     margin: 20px;
 }
@@ -35,7 +38,7 @@ li {
     border-radius: 10px;
 }
 
-.buttons {
+.buttons-container {
     align-items: flex-start;
     display: flex;
     height: 80%;
@@ -51,14 +54,23 @@ li {
 }
 
 .button {
+    background-color: #121A20;
     border: 1px solid black;
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    height: 35px;
     padding: 5px 15px;
+    width: 42px;
 }
 
 .double-tall {
     align-self: center;
     display: flex;
     align-items: center;
-    height: 80px;
+    height: 90px;
+}
+
+.button.red {
+    background-color: #D7354F;
 }

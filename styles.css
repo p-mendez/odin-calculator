@@ -68,6 +68,10 @@ body {
     background-color: #1b2125;
 }
 
+.button:active {
+    background-color: slategray;
+}
+
 .double-tall {
     align-self: center;
     display: flex;

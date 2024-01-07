@@ -34,7 +34,6 @@ body {
 .buttons-container {
     align-items: flex-start;
     display: flex;
-    height: 80%;
     justify-content: space-evenly;
 }
 

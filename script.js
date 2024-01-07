@@ -7,6 +7,7 @@ let display = "";
 // DOM SELECTORS
 const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
+const clearButtonDOM = document.querySelector("#clear");
 
 // FUNCTIONS 
 function add(...numbers) {
@@ -35,11 +36,18 @@ digitsDOM.forEach(digit => {
     digit.addEventListener("click", sendToDisplay);
 });
 
+clearButtonDOM.addEventListener("click", (e) => {
+    display = "";
+    displayDOM.textContent = display;
+});
+
 function sendToDisplay(event) {
     targetText = event.target.textContent;
+
+    // guard against double decimals
     if (display.includes(".") && targetText == ".")
         return;
-    
+
     display += "" + event.target.textContent;
     display = display.substring(0,8);
     displayDOM.textContent = display;

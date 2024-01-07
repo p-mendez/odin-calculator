@@ -7,7 +7,7 @@
 
 body {
     background-color: lightcyan;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Share Tech Mono', monospace;
 }
 
 .container {
@@ -36,8 +36,8 @@ body {
 
 .display {
     color: #121a20;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 35px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 50px;
     padding: 20px;
 }
 

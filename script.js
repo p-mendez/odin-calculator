@@ -2,6 +2,11 @@
 let firstNumber;
 let secondNumber;
 let operator;
+let display = "";
+
+// DOM VARIABLES
+let displayDOM = document.querySelector("#display");
+let digitsDOM = document.querySelectorAll(".digit");
 
 // FUNCTIONS 
 function add(...numbers) {
@@ -23,4 +28,15 @@ function operate(operator, firstNumber, secondNumber) {
 
 function subtract(minuend, subtrahend) {
     return minuend - subtrahend;
+}
+
+// Event Listeners
+digitsDOM.forEach(digit => {
+    digit.addEventListener("click", sendToDisplay);
+});
+
+function sendToDisplay(event) {
+    display += "" + event.target.textContent;
+    display = display.substring(0,8);
+    displayDOM.textContent = display;
 }

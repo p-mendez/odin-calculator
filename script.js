@@ -4,9 +4,9 @@ let secondNumber;
 let operator;
 let display = "";
 
-// DOM VARIABLES
-let displayDOM = document.querySelector("#display");
-let digitsDOM = document.querySelectorAll(".digit");
+// DOM SELECTORS
+const displayDOM = document.querySelector("#display");
+const digitsDOM = document.querySelectorAll(".digit");
 
 // FUNCTIONS 
 function add(...numbers) {

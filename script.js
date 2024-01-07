@@ -36,6 +36,10 @@ digitsDOM.forEach(digit => {
 });
 
 function sendToDisplay(event) {
+    targetText = event.target.textContent;
+    if (display.includes(".") && targetText == ".")
+        return;
+    
     display += "" + event.target.textContent;
     display = display.substring(0,8);
     displayDOM.textContent = display;

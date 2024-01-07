@@ -8,6 +8,7 @@
 body {
     background-color: lightcyan;
     font-family: 'Share Tech Mono', monospace;
+    margin: 20px;
 }
 
 .container {

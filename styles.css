@@ -25,10 +25,20 @@ body {
 }
 
 .screen {
+    align-items: center;
     background-color: #ADB6BF;
     border: 1px solid slategray;
+    display: flex;
     height: 20%;
+    justify-content: flex-end;
     margin: 20px;
+}
+
+.display {
+    color: #121a20;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
+    padding: 20px;
 }
 
 .buttons-container {

@@ -30,7 +30,7 @@ body {
     border: 1px solid slategray;
     display: flex;
     height: 20%;
-    justify-content: center;
+    justify-content: flex-end;
     margin: 20px;
 }
 
@@ -38,7 +38,7 @@ body {
     color: #121a20;
     font-family: 'Share Tech Mono', monospace;
     font-size: 50px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .buttons-container {

@@ -5,6 +5,7 @@ let operator;
 let display = "";
 
 // DOM SELECTORS
+const allClearButtonDOM = document.querySelector("#all-clear");
 const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
 const clearButtonDOM = document.querySelector("#clear");
@@ -34,6 +35,11 @@ function subtract(minuend, subtrahend) {
 // Event Listeners
 digitsDOM.forEach(digit => {
     digit.addEventListener("click", sendToDisplay);
+});
+
+allClearButtonDOM.addEventListener("click", (e) => {
+    display = "";
+    displayDOM.textContent = display;
 });
 
 clearButtonDOM.addEventListener("click", (e) => {

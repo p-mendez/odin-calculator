@@ -7,7 +7,7 @@
 
 body {
     background-color: lightcyan;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: monospace;
     margin: 20px;
 }
 
@@ -37,7 +37,7 @@ body {
 
 .display {
     color: #121a20;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: monospace;
     font-size: 50px;
     padding: 10px;
 }

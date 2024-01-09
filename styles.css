@@ -31,14 +31,20 @@ body {
     border: 1px solid slategray;
     display: flex;
     height: 20%;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin: 20px;
+}
+
+.negative-sign {
+    font-size:20px;
+    font-weight: 1000;
+    padding-left: 5px;
 }
 
 .display {
     color: #121a20;
     font-family: monospace;
-    font-size: 50px;
+    font-size: 45px;
     padding: 10px;
 }
 

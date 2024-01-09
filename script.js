@@ -9,6 +9,7 @@ const allClearButtonDOM = document.querySelector("#all-clear");
 const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
 const clearButtonDOM = document.querySelector("#clear");
+const plusMinusButtonDOM = document.querySelector("#plus-minus");
 
 // FUNCTIONS 
 function add(...numbers) {

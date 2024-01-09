@@ -10,6 +10,7 @@ const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
 const clearButtonDOM = document.querySelector("#clear");
 const plusMinusButtonDOM = document.querySelector("#plus-minus");
+const negativeSignDisplayDOM = document.querySelector("#negative-sign");
 
 // FUNCTIONS 
 function add(...numbers) {
@@ -46,6 +47,16 @@ allClearButtonDOM.addEventListener("click", (e) => {
 clearButtonDOM.addEventListener("click", (e) => {
     display = "";
     displayDOM.textContent = display;
+});
+
+plusMinusButtonDOM.addEventListener("click", (e) => {
+    let isNegative = negativeSignDisplayDOM.textContent.includes("−");
+
+    if (isNegative) {
+        negativeSignDisplayDOM.textContent = "";
+    } else {
+        negativeSignDisplayDOM.textContent = "−";
+    }
 });
 
 function sendToDisplay(event) {

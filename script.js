@@ -35,20 +35,24 @@ function subtract(minuend, subtrahend) {
 }
 
 // Event Listeners
+// Adds a click event listener to all digits which updates the display
 digitsDOM.forEach(digit => {
     digit.addEventListener("click", sendToDisplay);
 });
 
+// Adds event listener which clears the display when the AC button is pressed
 allClearButtonDOM.addEventListener("click", (e) => {
     display = "";
     displayDOM.textContent = display;
 });
 
+// Adds event listener which clears the display when the C button is pressed
 clearButtonDOM.addEventListener("click", (e) => {
     display = "";
     displayDOM.textContent = display;
 });
 
+// Adds event listener which shows a negative sign when +/- button is pressed
 plusMinusButtonDOM.addEventListener("click", (e) => {
     let isNegative = negativeSignDisplayDOM.textContent.includes("−");
 

@@ -10,6 +10,9 @@ const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
 const clearButtonDOM = document.querySelector("#clear");
 const equalsButtonDOM = document.querySelector("#equals");
+const minusButtonDOM = document.querySelector("#minus");
+const multiplicationButtonDOM = document.querySelector("#multiplication");
+const negativeSignDisplayDOM = document.querySelector("#negative-sign");
 const plusButtonDOM = document.querySelector("#plus");
 const plusMinusButtonDOM = document.querySelector("#plus-minus");
 const negativeSignDisplayDOM = document.querySelector("#negative-sign");
@@ -69,6 +72,13 @@ equalsButtonDOM.addEventListener("click", (e) => {
     display = "";
     sendToDisplay(operate(operator, firstNumber, secondNumber));
 });
+
+minusButtonDOM.addEventListener("click", (e) => {
+    firstNumber = Number(displayDOM.textContent);
+    operator = subtract;
+    display = "";
+});
+
 
 plusButtonDOM.addEventListener("click", (e) => {
     firstNumber = Number(displayDOM.textContent);

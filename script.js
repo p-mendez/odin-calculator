@@ -45,6 +45,11 @@ allClearButtonDOM.addEventListener("click", (e) => {
     resetDisplay();
 });
 
+// Adds event listener which clears the display when the C button is pressed
+clearButtonDOM.addEventListener("click", (e) => {
+    resetDisplay();
+});
+
 // Adds a click event listener to all digits which updates the display
 digitsDOM.forEach(digit => {
     digit.addEventListener("click", (e) => {
@@ -59,13 +64,8 @@ digitsDOM.forEach(digit => {
     })
 });
 
-// Adds event listener which clears the display when the C button is pressed
-clearButtonDOM.addEventListener("click", (e) => {
-    resetDisplay();
-});
-
 plusButtonDOM.addEventListener("click", (e) => {
-    firstNumber = Number(displayDOM.textContent);
+    firstNumber = add(Number(displayDOM.textContent),firstNumber);
     operator = add;
     display = "";
 });

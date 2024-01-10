@@ -38,8 +38,7 @@ function subtract(minuend, subtrahend) {
 // EVENT LISTENERS //
 // Adds event listener which clears the display when the AC button is pressed
 allClearButtonDOM.addEventListener("click", (e) => {
-    display = "0";
-    displayDOM.textContent = display;
+    resetDisplay();
 });
 
 // Adds a click event listener to all digits which updates the display
@@ -58,8 +57,7 @@ digitsDOM.forEach(digit => {
 
 // Adds event listener which clears the display when the C button is pressed
 clearButtonDOM.addEventListener("click", (e) => {
-    display = "0";
-    displayDOM.textContent = display;
+    resetDisplay();
 });
 
 plusButtonDOM.addEventListener("click", (e) => {
@@ -98,4 +96,9 @@ function sendToDisplay(textToDisplay) {
 function displayIsAtZeroState() {
     let currentDisplay = displayDOM.textContent;
     return currentDisplay == 0 && !currentDisplay.includes(".");
+}
+
+function resetDisplay() {
+    display = "0";
+    displayDOM.textContent = display;
 }

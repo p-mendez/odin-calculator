@@ -1,10 +1,10 @@
-// VARIABLES
+// VARIABLES //
 let firstNumber;
 let secondNumber;
 let operator;
 let display = "";
 
-// DOM SELECTORS
+// DOM SELECTORS //
 const allClearButtonDOM = document.querySelector("#all-clear");
 const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
@@ -13,7 +13,7 @@ const plusButtonDOM = document.querySelector("#plus");
 const plusMinusButtonDOM = document.querySelector("#plus-minus");
 const negativeSignDisplayDOM = document.querySelector("#negative-sign");
 
-// FUNCTIONS 
+// FUNCTIONS //
 function add(...numbers) {
     return numbers.reduce((previous, current) => previous + current, 0);
 }
@@ -35,10 +35,10 @@ function subtract(minuend, subtrahend) {
     return minuend - subtrahend;
 }
 
-// Event Listeners
+// EVENT LISTENERS //
 // Adds event listener which clears the display when the AC button is pressed
 allClearButtonDOM.addEventListener("click", (e) => {
-    display = "";
+    display = "0";
     displayDOM.textContent = display;
 });
 
@@ -46,13 +46,19 @@ allClearButtonDOM.addEventListener("click", (e) => {
 digitsDOM.forEach(digit => {
     digit.addEventListener("click", (e) => {
         targetText = e.target.textContent;
+        
+        // This conditional is to add a leading zero before the period
+        // if the display is at a zero state
+        if (displayIsAtZeroState() && targetText == ".") 
+            targetText = "0.";
+
         sendToDisplay(targetText);
     })
 });
 
 // Adds event listener which clears the display when the C button is pressed
 clearButtonDOM.addEventListener("click", (e) => {
-    display = "";
+    display = "0";
     displayDOM.textContent = display;
 });
 

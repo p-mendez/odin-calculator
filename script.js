@@ -9,6 +9,7 @@ const allClearButtonDOM = document.querySelector("#all-clear");
 const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
 const clearButtonDOM = document.querySelector("#clear");
+const plusButtonDOM = document.querySelector("#plus");
 const plusMinusButtonDOM = document.querySelector("#plus-minus");
 const negativeSignDisplayDOM = document.querySelector("#negative-sign");
 
@@ -53,6 +54,11 @@ digitsDOM.forEach(digit => {
 clearButtonDOM.addEventListener("click", (e) => {
     display = "";
     displayDOM.textContent = display;
+});
+
+plusButtonDOM.addEventListener("click", (e) => {
+    firstNumber = Number(displayDOM.textContent);
+    operator = add;
 });
 
 // Adds event listener which shows a negative sign when +/- button is pressed

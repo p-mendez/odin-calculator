@@ -64,8 +64,14 @@ digitsDOM.forEach(digit => {
     })
 });
 
+equalsButtonDOM.addEventListener("click", (e) => {
+    secondNumber = Number(displayDOM.textContent);
+    display = "";
+    sendToDisplay(operate(operator, firstNumber, secondNumber));
+});
+
 plusButtonDOM.addEventListener("click", (e) => {
-    firstNumber = add(Number(displayDOM.textContent),firstNumber);
+    firstNumber = Number(displayDOM.textContent);
     operator = add;
     display = "";
 });

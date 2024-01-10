@@ -84,6 +84,8 @@ function sendToDisplay(textToDisplay) {
     if (display.includes(".") && textToDisplay == ".")
         return;
 
+    // If the display is at zero state then the textToDisplay replaces the zero,
+    // otherwise, the textToDisplay is concatenated to what is in display.
     if (displayIsAtZeroState())
         display = String(textToDisplay)
     else 

@@ -67,6 +67,7 @@ clearButtonDOM.addEventListener("click", (e) => {
 plusButtonDOM.addEventListener("click", (e) => {
     firstNumber = Number(displayDOM.textContent);
     operator = add;
+    display = "";
 });
 
 // Adds event listener which shows a negative sign when +/- button is pressed

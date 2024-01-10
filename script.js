@@ -75,7 +75,7 @@ plusMinusButtonDOM.addEventListener("click", (e) => {
 // sends textToDisplay to the display node in the DOM
 function sendToDisplay(textToDisplay) {
     // guard against double decimals
-    if (displayHasOneDecimal(textToDisplay))
+    if (display.includes(".") && textToDisplay == ".")
         return;
 
     if (displayIsAtZeroState())
@@ -87,9 +87,6 @@ function sendToDisplay(textToDisplay) {
 }
 
 // HELPER FUNCTIONS
-function displayHasOneDecimal(textToDisplay) {
-    return display.includes(".") && textToDisplay == ".";
-}
 function displayIsAtZeroState() {
     let currentDisplay = displayDOM.textContent;
     return currentDisplay == 0 && !currentDisplay.includes(".");

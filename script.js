@@ -6,9 +6,10 @@ let display = "";
 
 // DOM SELECTORS //
 const allClearButtonDOM = document.querySelector("#all-clear");
+const clearButtonDOM = document.querySelector("#clear");
 const displayDOM = document.querySelector("#display");
 const digitsDOM = document.querySelectorAll(".digit");
-const clearButtonDOM = document.querySelector("#clear");
+const divisionButtonDOM = document.querySelector("#division");
 const equalsButtonDOM = document.querySelector("#equals");
 const minusButtonDOM = document.querySelector("#minus");
 const multiplicationButtonDOM = document.querySelector("#multiplication");
@@ -66,10 +67,19 @@ digitsDOM.forEach(digit => {
     })
 });
 
+divisionButtonDOM.addEventListener("click", (e) => {
+    firstNumber = Number(displayDOM.textContent);
+    operator = divide;
+    display = "";
+});
+
 equalsButtonDOM.addEventListener("click", (e) => {
     secondNumber = Number(displayDOM.textContent);
     display = "";
-    sendToDisplay(operate(operator, firstNumber, secondNumber));
+    if (operator == divide && secondNumber == 0)
+        sendToDisplay("NNN0P3!");
+    else
+        sendToDisplay(operate(operator, firstNumber, secondNumber));
 });
 
 minusButtonDOM.addEventListener("click", (e) => {

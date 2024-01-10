@@ -38,6 +38,9 @@ function subtract(minuend, subtrahend) {
 // EVENT LISTENERS //
 // Adds event listener which clears the display when the AC button is pressed
 allClearButtonDOM.addEventListener("click", (e) => {
+    firstNumber = undefined;
+    secondNumber = undefined;
+    operator = undefined;
     resetDisplay();
 });
 

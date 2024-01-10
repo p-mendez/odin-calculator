@@ -37,7 +37,10 @@ function subtract(minuend, subtrahend) {
 // Event Listeners
 // Adds a click event listener to all digits which updates the display
 digitsDOM.forEach(digit => {
-    digit.addEventListener("click", sendToDisplay);
+    digit.addEventListener("click", (e) => {
+        targetText = e.target.textContent;
+        sendToDisplay(targetText);
+    })
 });
 
 // Adds event listener which clears the display when the AC button is pressed
@@ -63,14 +66,13 @@ plusMinusButtonDOM.addEventListener("click", (e) => {
     }
 });
 
-function sendToDisplay(event) {
-    targetText = event.target.textContent;
-
+// sends textToDisplay to the display node in the DOM
+function sendToDisplay(textToDisplay) {
     // guard against double decimals
-    if (display.includes(".") && targetText == ".")
+    if (display.includes(".") && textToDisplay == ".")
         return;
 
-    display += "" + event.target.textContent;
+    display += "" + textToDisplay;
     display = display.substring(0,8);
     displayDOM.textContent = display;
 }

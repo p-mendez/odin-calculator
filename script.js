@@ -15,7 +15,6 @@ const multiplicationButtonDOM = document.querySelector("#multiplication");
 const negativeSignDisplayDOM = document.querySelector("#negative-sign");
 const plusButtonDOM = document.querySelector("#plus");
 const plusMinusButtonDOM = document.querySelector("#plus-minus");
-const negativeSignDisplayDOM = document.querySelector("#negative-sign");
 
 // FUNCTIONS //
 function add(...numbers) {
@@ -79,6 +78,11 @@ minusButtonDOM.addEventListener("click", (e) => {
     display = "";
 });
 
+multiplicationButtonDOM.addEventListener("click", (e) => {
+    firstNumber = Number(displayDOM.textContent);
+    operator = multiply;
+    display = "";
+});
 
 plusButtonDOM.addEventListener("click", (e) => {
     firstNumber = Number(displayDOM.textContent);

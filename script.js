@@ -78,7 +78,16 @@ function sendToDisplay(textToDisplay) {
     if (display.includes(".") && textToDisplay == ".")
         return;
 
-    display += "" + textToDisplay;
+    if (displayIsAtZeroState())
+        display = String(textToDisplay)
+    else 
+        display += String(textToDisplay);
     display = display.substring(0,8);
     displayDOM.textContent = display;
+}
+
+// HELPER FUNCTIONS
+function displayIsAtZeroState() {
+    let currentDisplay = displayDOM.textContent;
+    return currentDisplay == 0 && !currentDisplay.includes(".");
 }

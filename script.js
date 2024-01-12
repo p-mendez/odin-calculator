@@ -45,13 +45,11 @@ allClearButtonDOM.addEventListener("click", (e) => {
     firstNumber = undefined;
     secondNumber = undefined;
     operator = undefined;
-    negativeSignDisplayDOM.textContent = "";
     resetDisplay();
 });
 
 // Adds event listener which clears the display when the C button is pressed
 clearButtonDOM.addEventListener("click", (e) => {
-    negativeSignDisplayDOM.textContent = "";
     resetDisplay();
 });
 
@@ -149,4 +147,5 @@ function getNumber() {
 function resetDisplay() {
     display = "0";
     displayDOM.textContent = display;
+    negativeSignDisplayDOM.textContent = "";
 }

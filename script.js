@@ -1,8 +1,8 @@
 // VARIABLES //
-let firstNumber;
-let secondNumber;
-let operator;
 let display = "";
+let firstNumber;
+let operator;
+let secondNumber;
 
 // DOM SELECTORS //
 const allClearButtonDOM = document.querySelector("#all-clear");
@@ -45,17 +45,22 @@ allClearButtonDOM.addEventListener("click", (e) => {
     firstNumber = undefined;
     secondNumber = undefined;
     operator = undefined;
+    negativeSignDisplayDOM.textContent = "";
     resetDisplay();
 });
 
 // Adds event listener which clears the display when the C button is pressed
 clearButtonDOM.addEventListener("click", (e) => {
+    negativeSignDisplayDOM.textContent = "";
     resetDisplay();
 });
 
 // Adds a click event listener to all digits which updates the display
 digitsDOM.forEach(digit => {
     digit.addEventListener("click", (e) => {
+        if (!display) 
+            negativeSignDisplayDOM.textContent = "";
+
         targetText = e.target.textContent;
         
         // This conditional is to add a leading zero before the period
@@ -107,7 +112,7 @@ plusMinusButtonDOM.addEventListener("click", (e) => {
     if (isNegative) {
         negativeSignDisplayDOM.textContent = "";
     } else {
-        negativeSignDisplayDOM.textContent = "−";
+        negativeSignDisplayDOM.textContent = "−"
     }
 });
 

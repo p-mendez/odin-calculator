@@ -119,18 +119,17 @@ plusMinusButtonDOM.addEventListener("click", (e) => {
 // sends textToDisplay to the display node in the DOM
 function sendToDisplay(textToDisplay) {
     negativeSignDisplayDOM.textContent = "";
-    
+
     // guard against double decimals
     if (display.includes(".") && textToDisplay == ".")
         return;
 
-    // If the display is at zero state then the textToDisplay replaces the zero,
-    // otherwise, the textToDisplay is concatenated to what is in display.
-    if (displayIsAtZeroState())
-        display = String(textToDisplay)
-    else 
-        display += String(textToDisplay);
-    display = display.substring(0,8);
+    display = getDisplayString(textToDisplay);
+
+    if (display < 0) {
+        negativeSignDisplayDOM.textContent = "−";
+        display = Math.abs(display);
+    }
     displayDOM.textContent = display;
 }
 
@@ -138,6 +137,15 @@ function sendToDisplay(textToDisplay) {
 function displayIsAtZeroState() {
     let currentDisplay = displayDOM.textContent;
     return currentDisplay == 0 && !currentDisplay.includes(".");
+}
+
+function getDisplayString(text) {
+    if (displayIsAtZeroState())
+        display = String(text);
+    else 
+        display += String(text);
+
+    return display.substring(0,8);
 }
 
 function getNumber() {

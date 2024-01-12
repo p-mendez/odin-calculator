@@ -68,18 +68,10 @@ digitsDOM.forEach(digit => {
 });
 
 divisionButtonDOM.addEventListener("click", (e) => {
-    firstNumber = Number(displayDOM.textContent);
+    firstNumber = getNumber();
     operator = divide;
     display = "";
 });
-
-function getNumber() {
-    if (negativeSignDisplayDOM.textContent == "−") {
-        return -1 * Number(displayDOM.textContent);
-    } else {
-        return Number(displayDOM.textContent);
-    }
-}
 
 equalsButtonDOM.addEventListener("click", (e) => {
     secondNumber = Number(displayDOM.textContent);
@@ -91,19 +83,19 @@ equalsButtonDOM.addEventListener("click", (e) => {
 });
 
 minusButtonDOM.addEventListener("click", (e) => {
-    firstNumber = Number(displayDOM.textContent);
+    firstNumber = getNumber();
     operator = subtract;
     display = "";
 });
 
 multiplicationButtonDOM.addEventListener("click", (e) => {
-    firstNumber = Number(displayDOM.textContent);
+    firstNumber = getNumber();
     operator = multiply;
     display = "";
 });
 
 plusButtonDOM.addEventListener("click", (e) => {
-    firstNumber = Number(displayDOM.textContent);
+    firstNumber = getNumber();
     operator = add;
     display = "";
 });
@@ -139,6 +131,14 @@ function sendToDisplay(textToDisplay) {
 function displayIsAtZeroState() {
     let currentDisplay = displayDOM.textContent;
     return currentDisplay == 0 && !currentDisplay.includes(".");
+}
+
+function getNumber() {
+    if (negativeSignDisplayDOM.textContent == "−") {
+        return -1 * Number(displayDOM.textContent);
+    } else {
+        return Number(displayDOM.textContent);
+    }
 }
 
 function resetDisplay() {

@@ -1,5 +1,5 @@
 // VARIABLES //
-let display = "";
+let numberToDisplay = "";
 let firstNumber;
 let operator;
 let secondNumber;
@@ -56,7 +56,7 @@ clearButtonDOM.addEventListener("click", (e) => {
 // Adds a click event listener to all digits which updates the display
 digitsDOM.forEach(digit => {
     digit.addEventListener("click", (e) => {
-        if (!display) 
+        if (!numberToDisplay) 
             negativeSignDisplayDOM.textContent = "";
 
         targetText = e.target.textContent;
@@ -73,12 +73,12 @@ digitsDOM.forEach(digit => {
 divisionButtonDOM.addEventListener("click", (e) => {
     firstNumber = getNumber();
     operator = divide;
-    display = "";
+    numberToDisplay = "";
 });
 
 equalsButtonDOM.addEventListener("click", (e) => {
     secondNumber = getNumber();
-    display = "";
+    numberToDisplay = "";
     if (operator == divide && secondNumber == 0)
         sendToDisplay("NNN0P3!");
     else
@@ -88,19 +88,19 @@ equalsButtonDOM.addEventListener("click", (e) => {
 minusButtonDOM.addEventListener("click", (e) => {
     firstNumber = getNumber();
     operator = subtract;
-    display = "";
+    numberToDisplay = "";
 });
 
 multiplicationButtonDOM.addEventListener("click", (e) => {
     firstNumber = getNumber();
     operator = multiply;
-    display = "";
+    numberToDisplay = "";
 });
 
 plusButtonDOM.addEventListener("click", (e) => {
     firstNumber = getNumber();
     operator = add;
-    display = "";
+    numberToDisplay = "";
 });
 
 // Adds event listener which shows a negative sign when +/- button is pressed
@@ -121,16 +121,16 @@ function sendToDisplay(textToDisplay) {
     negativeSignDisplayDOM.textContent = "";
 
     // guard against double decimals
-    if (display.includes(".") && textToDisplay == ".")
+    if (numberToDisplay.includes(".") && textToDisplay == ".")
         return;
 
-    display = getDisplayString(textToDisplay);
+    numberToDisplay = getDisplayString(textToDisplay);
 
-    if (display < 0) {
+    if (numberToDisplay < 0) {
         negativeSignDisplayDOM.textContent = "−";
-        display = Math.abs(display);
+        numberToDisplay = Math.abs(numberToDisplay);
     }
-    displayDOM.textContent = display;
+    displayDOM.textContent = numberToDisplay;
 }
 
 // HELPER FUNCTIONS
@@ -141,11 +141,11 @@ function displayIsAtZeroState() {
 
 function getDisplayString(text) {
     if (displayIsAtZeroState())
-        display = String(text);
+        numberToDisplay = String(text);
     else 
-        display += String(text);
+        numberToDisplay += String(text);
 
-    return display.substring(0,8);
+    return numberToDisplay.substring(0,8);
 }
 
 function getNumber() {
@@ -157,7 +157,7 @@ function getNumber() {
 }
 
 function resetDisplay() {
-    display = "0";
-    displayDOM.textContent = display;
+    numberToDisplay = "0";
+    displayDOM.textContent = numberToDisplay;
     negativeSignDisplayDOM.textContent = "";
 }

@@ -77,7 +77,7 @@ divisionButtonDOM.addEventListener("click", (e) => {
 });
 
 equalsButtonDOM.addEventListener("click", (e) => {
-    secondNumber = Number(displayDOM.textContent);
+    secondNumber = getNumber();
     display = "";
     if (operator == divide && secondNumber == 0)
         sendToDisplay("NNN0P3!");
@@ -118,6 +118,8 @@ plusMinusButtonDOM.addEventListener("click", (e) => {
 
 // sends textToDisplay to the display node in the DOM
 function sendToDisplay(textToDisplay) {
+    negativeSignDisplayDOM.textContent = "";
+    
     // guard against double decimals
     if (display.includes(".") && textToDisplay == ".")
         return;

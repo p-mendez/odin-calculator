@@ -73,6 +73,14 @@ divisionButtonDOM.addEventListener("click", (e) => {
     display = "";
 });
 
+function getNumber() {
+    if (negativeSignDisplayDOM.textContent == "−") {
+        return -1 * Number(displayDOM.textContent);
+    } else {
+        return Number(displayDOM.textContent);
+    }
+}
+
 equalsButtonDOM.addEventListener("click", (e) => {
     secondNumber = Number(displayDOM.textContent);
     display = "";

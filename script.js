@@ -105,6 +105,8 @@ plusButtonDOM.addEventListener("click", (e) => {
 
 // Adds event listener which shows a negative sign when +/- button is pressed
 plusMinusButtonDOM.addEventListener("click", (e) => {
+    if (displayIsAtZeroState())
+        return;
     let isNegative = negativeSignDisplayDOM.textContent.includes("−");
 
     if (isNegative) {

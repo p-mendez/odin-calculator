@@ -99,10 +99,7 @@ multiplicationButtonDOM.addEventListener("click", (e) => {
 
 plusButtonDOM.addEventListener("click", (e) => {
     if (operator) {
-        secondNumber = getNumber();
-        numberToDisplay = "";
-        firstNumber = operate(operator, firstNumber, secondNumber);
-        sendToDisplay(firstNumber);
+        displayCurrentResult();
     } else {
         firstNumber = getNumber();
     }
@@ -141,6 +138,13 @@ function sendToDisplay(textToDisplay) {
 }
 
 // HELPER FUNCTIONS
+function displayCurrentResult() {
+    secondNumber = getNumber();
+    numberToDisplay = "";
+    firstNumber = operate(operator, firstNumber, secondNumber);
+    sendToDisplay(firstNumber);
+}
+
 function displayIsAtZeroState() {
     let currentDisplay = displayDOM.textContent;
     return currentDisplay == 0 && !currentDisplay.includes(".");

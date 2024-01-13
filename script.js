@@ -98,7 +98,14 @@ multiplicationButtonDOM.addEventListener("click", (e) => {
 });
 
 plusButtonDOM.addEventListener("click", (e) => {
-    firstNumber = getNumber();
+    if (operator) {
+        secondNumber = getNumber();
+        numberToDisplay = "";
+        firstNumber = operate(operator, firstNumber, secondNumber);
+        sendToDisplay(firstNumber);
+    } else {
+        firstNumber = getNumber();
+    }
     operator = add;
     numberToDisplay = "";
 });

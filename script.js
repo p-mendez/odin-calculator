@@ -98,14 +98,12 @@ multiplicationButtonDOM.addEventListener("click", (e) => {
 });
 
 plusButtonDOM.addEventListener("click", (e) => {
-    if (operator) {
-        displayCurrentResult();
-    } else {
-        firstNumber = getNumber();
-    }
+    getFirstNumberOrDisplayCurrentResult();
     operator = add;
     numberToDisplay = "";
 });
+
+
 
 // Adds event listener which shows a negative sign when +/- button is pressed
 plusMinusButtonDOM.addEventListener("click", (e) => {
@@ -157,6 +155,14 @@ function getDisplayString(text) {
         numberToDisplay += String(text);
 
     return numberToDisplay.substring(0,8);
+}
+
+function getFirstNumberOrDisplayCurrentResult() {
+    if (operator) {
+        displayCurrentResult();
+    } else {
+        firstNumber = getNumber();
+    }
 }
 
 function getNumber() {

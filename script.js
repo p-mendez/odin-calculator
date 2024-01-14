@@ -18,14 +18,17 @@ const plusButtonDOM = document.querySelector("#plus");
 const plusMinusButtonDOM = document.querySelector("#plus-minus");
 
 // FUNCTIONS //
+/* Returns sum of any number of arguments passed */
 function add(...numbers) {
     return numbers.reduce((previous, current) => previous + current, 0);
 }
 
+/* Returns the quotient of the dividend and divisor) */
 function divide(dividend, divisor) {
     return dividend / divisor;
 }
 
+/* Returns the quotient of any number of arguments passed */
 function multiply(...numbers) {
     return numbers.reduce((previous, current) => previous * current, 1);
 }
@@ -35,27 +38,17 @@ function operate(operator, firstNumber, secondNumber) {
     return operator(firstNumber, secondNumber);
 }
 
+/* Returns the difference of the minuend minus the subtrahend */
 function subtract(minuend, subtrahend) {
     return minuend - subtrahend;
 }
 
 // EVENT LISTENERS //
-// Adds event listener which clears the display when the AC button is pressed
-allClearButtonDOM.addEventListener("click", (e) => {
-    firstNumber = undefined;
-    secondNumber = undefined;
-    operator = undefined;
-    resetDisplay();
-});
-
-// Adds event listener which clears the display when the C button is pressed
-clearButtonDOM.addEventListener("click", (e) => {
-    resetDisplay();
-});
-
+// DIGITS
 // Adds a click event listener to all digits which updates the display
 digitsDOM.forEach(digit => {
     digit.addEventListener("click", (e) => {
+        // Removes the negative sign in the display if this is the first digit of a number
         if (!numberToDisplay) 
             negativeSignDisplayDOM.textContent = "";
 
@@ -70,13 +63,20 @@ digitsDOM.forEach(digit => {
     })
 });
 
+// EVENT LISTENERS //
+// OPERATIONS
+/* This function displays current result and saves it to firstNumber if 
+ * there is already an operator assigned; otherwise, it saves the displayed
+ * number as firstNumber. After, it assigns the operator to divide */
 divisionButtonDOM.addEventListener("click", (e) => {
-    // firstNumber = getNumber();
-    getFirstNumberOrDisplayCurrentResult();
+    setFirstNumberOrDisplayCurrentResult();
     operator = divide;
     numberToDisplay = "";
 });
 
+/* This function saves the displayed number as secondNumber. Then it checks
+ * to see if there is a division by zero, otherwise it evaluates the current
+ * operation and sends it to display */
 equalsButtonDOM.addEventListener("click", (e) => {
     secondNumber = getNumber();
     numberToDisplay = "";
@@ -86,27 +86,47 @@ equalsButtonDOM.addEventListener("click", (e) => {
         sendToDisplay(operate(operator, firstNumber, secondNumber));
 });
 
+/* This function displays current result and saves it to firstNumber if 
+ * there is already an operator assigned; otherwise, it saves the displayed
+ * number as firstNumber. After, it assigns the operator to subtract */
 minusButtonDOM.addEventListener("click", (e) => {
-    getFirstNumberOrDisplayCurrentResult();
-    // firstNumber = getNumber();
+    setFirstNumberOrDisplayCurrentResult();
     operator = subtract;
     numberToDisplay = "";
 });
 
+/* This function displays current result and saves it to firstNumber if 
+ * there is already an operator assigned; otherwise, it saves the displayed
+ * number as firstNumber. After, it assigns the operator to multiply */
 multiplicationButtonDOM.addEventListener("click", (e) => {
-    getFirstNumberOrDisplayCurrentResult();
-    // firstNumber = getNumber();
+    setFirstNumberOrDisplayCurrentResult();
     operator = multiply;
     numberToDisplay = "";
 });
 
+/* This function displays current result and saves it to firstNumber if 
+ * there is already an operator assigned; otherwise, it saves the displayed
+ * number as firstNumber. After, it assigns the operator to add */
 plusButtonDOM.addEventListener("click", (e) => {
-    getFirstNumberOrDisplayCurrentResult();
+    setFirstNumberOrDisplayCurrentResult();
     operator = add;
     numberToDisplay = "";
 });
 
+// EVENT LISTENERS //
+// OTHER BUTTONS
+// Adds event listener which clears the display when the AC button is pressed
+allClearButtonDOM.addEventListener("click", (e) => {
+    firstNumber = undefined;
+    secondNumber = undefined;
+    operator = undefined;
+    resetDisplay();
+});
 
+// Adds event listener which clears the display when the C button is pressed
+clearButtonDOM.addEventListener("click", (e) => {
+    resetDisplay();
+});
 
 // Adds event listener which shows a negative sign when +/- button is pressed
 plusMinusButtonDOM.addEventListener("click", (e) => {
@@ -120,6 +140,59 @@ plusMinusButtonDOM.addEventListener("click", (e) => {
         negativeSignDisplayDOM.textContent = "−"
     }
 });
+
+// HELPER FUNCTIONS
+/* Displays current (running) result. This is used in lieu of using the equal sign */
+function displayCurrentResult() {
+    secondNumber = getNumber();
+    numberToDisplay = "";
+    firstNumber = operate(operator, firstNumber, secondNumber);
+    sendToDisplay(firstNumber);
+}
+
+/* Returns true if current display shows a 0 without a period; otherwise, false */
+function displayIsAtZeroState() {
+    let currentDisplay = displayDOM.textContent;
+    return currentDisplay == 0 && !currentDisplay.includes(".");
+}
+
+/* This function returns an 8 digit truncated number of what should be displayed on screen */
+function getDisplayString(text) {
+    if (displayIsAtZeroState())
+        numberToDisplay = String(text);
+    else 
+        numberToDisplay += String(text);
+
+    return numberToDisplay.substring(0,8);
+}
+
+/* Displays the current running total if there is an operator saved. Otherwise, it gets
+ * what is displayed and saves it as firstNumber.*/
+function setFirstNumberOrDisplayCurrentResult() {
+    if (operator) {
+        displayCurrentResult();
+    } else {
+        firstNumber = getNumber();
+    }
+}
+
+/* Retuns actual number that is displayed in the screen. If the negative sign is activated, 
+ * on the display, then the number returned will be a negative number; otherwise, it will be 
+ * a positive number */
+function getNumber() {
+    if (negativeSignDisplayDOM.textContent == "−") {
+        return -1 * Number(displayDOM.textContent);
+    } else {
+        return Number(displayDOM.textContent);
+    }
+}
+
+/* Reset display to show 0 and turns off the negative sign */
+function resetDisplay() {
+    numberToDisplay = "0";
+    displayDOM.textContent = numberToDisplay;
+    negativeSignDisplayDOM.textContent = "";
+}
 
 // sends textToDisplay to the display node in the DOM
 function sendToDisplay(textToDisplay) {
@@ -136,48 +209,4 @@ function sendToDisplay(textToDisplay) {
         numberToDisplay = Math.abs(numberToDisplay);
     }
     displayDOM.textContent = numberToDisplay;
-}
-
-// HELPER FUNCTIONS
-function displayCurrentResult() {
-    secondNumber = getNumber();
-    numberToDisplay = "";
-    firstNumber = operate(operator, firstNumber, secondNumber);
-    sendToDisplay(firstNumber);
-}
-
-function displayIsAtZeroState() {
-    let currentDisplay = displayDOM.textContent;
-    return currentDisplay == 0 && !currentDisplay.includes(".");
-}
-
-function getDisplayString(text) {
-    if (displayIsAtZeroState())
-        numberToDisplay = String(text);
-    else 
-        numberToDisplay += String(text);
-
-    return numberToDisplay.substring(0,8);
-}
-
-function getFirstNumberOrDisplayCurrentResult() {
-    if (operator) {
-        displayCurrentResult();
-    } else {
-        firstNumber = getNumber();
-    }
-}
-
-function getNumber() {
-    if (negativeSignDisplayDOM.textContent == "−") {
-        return -1 * Number(displayDOM.textContent);
-    } else {
-        return Number(displayDOM.textContent);
-    }
-}
-
-function resetDisplay() {
-    numberToDisplay = "0";
-    displayDOM.textContent = numberToDisplay;
-    negativeSignDisplayDOM.textContent = "";
 }

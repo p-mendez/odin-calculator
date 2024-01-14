@@ -71,7 +71,8 @@ digitsDOM.forEach(digit => {
 });
 
 divisionButtonDOM.addEventListener("click", (e) => {
-    firstNumber = getNumber();
+    // firstNumber = getNumber();
+    getFirstNumberOrDisplayCurrentResult();
     operator = divide;
     numberToDisplay = "";
 });
@@ -86,13 +87,15 @@ equalsButtonDOM.addEventListener("click", (e) => {
 });
 
 minusButtonDOM.addEventListener("click", (e) => {
-    firstNumber = getNumber();
+    getFirstNumberOrDisplayCurrentResult();
+    // firstNumber = getNumber();
     operator = subtract;
     numberToDisplay = "";
 });
 
 multiplicationButtonDOM.addEventListener("click", (e) => {
-    firstNumber = getNumber();
+    getFirstNumberOrDisplayCurrentResult();
+    // firstNumber = getNumber();
     operator = multiply;
     numberToDisplay = "";
 });
